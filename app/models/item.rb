@@ -9,8 +9,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :handling
 
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "out of setting range"}
-  validates :name, :description, :image, presence: true
+  validates :name, :description, :price, :image, presence: true
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "out of setting range"}
   with_options numericality: { other_than: 1, message: "select"} do
     validates :category_id
     validates :condition_id
