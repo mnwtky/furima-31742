@@ -25,28 +25,28 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Description can't be blank")
     end
-    it "カテゴリーの情報が必須であること" do
-      @item.category_id = nil
+    it "category_idが1のときに登録できないこと" do
+      @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Category select")
     end
-    it "商品の状態についての情報が必須であること" do
-      @item.condition_id = nil
+    it "condition_idが1のときに登録できないこと" do
+      @item.condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition select")
     end
-    it "配送料の負担についての情報が必須であること" do
-      @item.postage_payer_id = nil
+    it "postage_payer_idが1のときに登録できないこと" do
+      @item.postage_payer_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Postage payer select")
     end
-    it "発送元の地域についての情報が必須であること" do
-      @item.prefecture_id = nil
+    it "prefecture_idが1のときに登録できないこと" do
+      @item.prefecture_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture select")
     end
-    it "発送までの日数についての情報が必須であること" do
-      @item.handling_id = nil
+    it "handling_idが1のときに登録できないこと" do
+      @item.handling_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Handling select")
     end
