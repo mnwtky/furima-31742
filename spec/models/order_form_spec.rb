@@ -49,5 +49,10 @@ RSpec.describe OrderForm, type: :model do
       @order_form.valid?
       expect(@order_form.errors.full_messages).to include("Phone number Input only number")
     end
+    it "電話番号にはハイフンは不要で、12桁以上だと購入できないこと" do
+      @order_form.phone_number = '90123456789'
+      @order_form.valid?
+      expect(@order_form.errors.full_messages).to include("Phone number Input only number")
+    end
   end
 end
